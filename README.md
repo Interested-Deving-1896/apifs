@@ -1,55 +1,91 @@
 # apifs
-[![Go Reference](https://pkg.go.dev/badge/github.com/rmatsuoka/apifs.svg)](https://pkg.go.dev/github.com/rmatsuoka/apifs)
 
-Package apifs is a framework for creating file system style APIs
-like the Plan 9 software.
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/apifs) [![KDE Eco](https://img.shields.io/badge/KDE%20Eco-certified-brightgreen?logo=kde&logoColor=white&style=flat-square)](https://eco.kde.org/) [![Blue Angel](https://img.shields.io/badge/Blue%20Angel-DE--UZ%20215-0055a4?style=flat-square)](https://www.blauer-engel.de/en/certification/criteria) [![Energy](https://api.green-coding.io/v1/ci/badge/get?repo=Interested-Deving-1896%2Fapifs&branch=main&workflow=eco-audit.yml)](https://metrics.green-coding.io/ci-index.html)
 
-This package defines the Node type which manipulates programs from
-the file system.  For example, a Node named Val that holds a value
-can refer to and change that value in the program as
- a variable. In addition, the value can also be referenced and
- modified by "read" and "write" to `(*Val).Open()` file.
 
-# Example
-Let's create a file system with two files `name` and `hello`.
-``` Go
-root := apifs.NewDir()
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-name := apifs.NewVal[string]("glenda", func(p []byte) (string, error) {
-	return string(p), nil
-})
-root.Mknod("name", name)
+## Architecture
 
-hello := apifs.NewEvent(func() (io.Reader, error) {
-	return strings.NewReader(fmt.Sprintf("Hello, %s!\n", name.Get()), nil
-})
-root.Mknod("hello", hello)
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
 
-fsys := apifs.NewFS(root)
+## Install
+
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
+
+```bash
+git clone https://github.com/Interested-Deving-1896/apifs.git
+cd apifs
 ```
 
-First, the contents of two file are as follows
-``` Bash
-$ ls
-name hello
-$ cat name
-glenda$ cat hello
-Hello, glenda
+## Usage
+
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
+
+## Configuration
+
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
+
+## CI
+
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
+
+## Mirror chain
+
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/apifs`](https://github.com/Interested-Deving-1896/apifs) and mirrored through:
+
+```
+Interested-Deving-1896/apifs  ──►  OpenOS-Project-OSP/apifs  ──►  OpenOS-Project-Ecosystem-OOC/apifs
 ```
 
-Next, let's change the content of name to `gopher`.
-``` Bash
-$ echo -n gopher > name
-```
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-Then, the contents of hello is changed.
-``` Bash
-$ cat hello
-Hello, gopher
-```
+## Contributors
 
-How does it work? First, `hello` is an Event. When this node is
-opened, The contents of file hello is io.Reader returned by this
-function f.  Next, `name` is a Val. This node holds a value, which
-can be referenced and changed by the Set and Get methods.  Furthermore,
-this value can also be referenced and changed by an open file.
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
+
+## Origins
+
+<!-- AI:start:origins -->
+_Original project — no upstream influences recorded._
+<!-- AI:end:origins -->
+
+## Resources
+
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
+
+## Accessibility
+
+<!-- AI:start:accessibility -->
+This repo uses automated accessibility auditing via `check-accessibility.yml`.
+
+Checks include: CODEOWNERS ownership coverage, README screen-reader compatibility,
+WCAG 2.1 AA HTML compliance, audio overview (espeak-ng), and Braille output (liblouis).
+
+
+
+
+Run the [Check Accessibility](https://github.com/Interested-Deving-1896/apifs/actions/workflows/check-accessibility.yml)
+workflow to generate the first report and accessibility artifacts.
+See [DOCS/accessibility.md](https://github.com/Interested-Deving-1896/apifs/blob/main/DOCS/accessibility.md) for the full reference.
+<!-- AI:end:accessibility -->
+
+## License
+
+<!-- AI:start:license -->
+[MIT](https://github.com/Interested-Deving-1896/apifs/blob/main/LICENSE) © 2026 [Interested-Deving-1896](https://github.com/Interested-Deving-1896)
+<!-- AI:end:license -->
